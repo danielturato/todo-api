@@ -13,7 +13,7 @@ public class App {
 
     public static void main(String[] args) {
         staticFileLocation("/public");
-        String datasource = "jdbc:h2:~/test.db";
+        String datasource = "jdbc:h2:~/todos.db";
         if (args.length > 0) {
             if (args.length != 2) {
                 System.out.println("java Todos <port> <datasource>");
@@ -34,9 +34,7 @@ public class App {
         }, gson::toJson);
 
         post("/api/v1/todos", "application/json", (req, res) -> {
-            System.out.println(req.body());
             Todo todo = gson.fromJson(req.body(), Todo.class);
-            System.out.println(todo.isCompleted());
             todoDao.add(todo);
             res.status(201);
             return todo;
@@ -50,7 +48,7 @@ public class App {
             return todo;
         }, gson::toJson);
 
-        delete("/api/v1/todos:id", "application/json", (req, res) -> {
+        delete("/api/v1/todos/:id", "application/json", (req, res) -> {
             int id = Integer.parseInt(req.params("id"));
             todoDao.delete(id);
             res.status(204);

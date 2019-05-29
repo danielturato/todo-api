@@ -1,4 +1,4 @@
-package com.teamtreehouse.todos;
+package com.teamtreehouse.todos.dao;
 
 import com.teamtreehouse.techdegrees.dao.Sql2oTodoDao;
 import com.teamtreehouse.techdegrees.models.Todo;
