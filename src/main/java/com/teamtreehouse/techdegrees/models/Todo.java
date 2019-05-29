@@ -3,9 +3,9 @@ package com.teamtreehouse.techdegrees.models;
 public class Todo {
     private int id;
     private String name;
-    private Boolean isCompleted;
+    private boolean isCompleted;
 
-    public Todo(String name, Boolean isCompleted) {
+    public Todo(String name, boolean isCompleted) {
         this.name = name;
         this.isCompleted = isCompleted;
     }
@@ -26,11 +26,11 @@ public class Todo {
         this.name = name;
     }
 
-    public Boolean getCompleted() {
+    public boolean isCompleted() {
         return isCompleted;
     }
 
-    public void setCompleted(Boolean completed) {
+    public void setCompleted(boolean completed) {
         isCompleted = completed;
     }
 }

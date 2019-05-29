@@ -1,4 +1,4 @@
-package com.teamtreehouse.todos.dao;
+package com.teamtreehouse.todos;
 
 import com.teamtreehouse.techdegrees.dao.Sql2oTodoDao;
 import com.teamtreehouse.techdegrees.models.Todo;
@@ -50,7 +50,8 @@ public class Sql2oTodoDaoTest {
     @Test
     public void todoGetsDeleted() {
         Todo todo = newTestTodo();
-        dao.delete(todo);
+        dao.add(todo);
+        dao.delete(todo.getId());
 
         Todo todo1 = dao.findById(todo.getId());
 

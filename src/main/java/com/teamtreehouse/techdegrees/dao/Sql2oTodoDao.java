@@ -20,7 +20,8 @@ public class Sql2oTodoDao implements TodoDao {
         String sql = "INSERT INTO todos (name, completed) VALUES (:name, :completed)";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
-                    .bind(todo)
+                    .addParameter("name", todo.getName())
+                    .addParameter("completed", todo.isCompleted())
                     .executeUpdate()
                     .getKey();
 
@@ -42,10 +43,10 @@ public class Sql2oTodoDao implements TodoDao {
     }
 
     @Override
-    public void delete(Todo todo) {
+    public void delete(int id) {
         String sql = "DELETE FROM todos WHERE id = :id";
         try (Connection con = sql2o.open()) {
-            con.createQuery(sql).bind(todo).executeUpdate();
+            con.createQuery(sql).addParameter("id", id).executeUpdate();
         } catch (Sql2oException ex) {
             System.out.println(ex.getMessage());
             System.exit(0);
