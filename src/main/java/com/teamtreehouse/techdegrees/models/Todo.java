@@ -22,7 +22,15 @@ public class Todo {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Boolean getCompleted() {
         return isCompleted;
+    }
+
+    public void setCompleted(Boolean completed) {
+        isCompleted = completed;
     }
 }

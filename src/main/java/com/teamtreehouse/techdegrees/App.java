@@ -9,7 +9,9 @@ public class App {
     public static void main(String[] args) {
         staticFileLocation("/public");
 
-        get("/blah", (req, res) -> "Hello!");
+//        get("/api/v1/todos", "application/json", (req, res) -> {
+//
+//        });
 
     }
 
